@@ -1,0 +1,2 @@
+source C:/FIRMWARE_5_MOTOR/esp-drone-firmware/esp-drone/build/gdbinit/symbols
+source C:/FIRMWARE_5_MOTOR/esp-drone-firmware/esp-drone/build/gdbinit/connect
