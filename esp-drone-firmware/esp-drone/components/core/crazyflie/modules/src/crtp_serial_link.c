@@ -8,6 +8,8 @@
 #include "commander.h"
 #include "estimator.h"
 #include "stabilizer_types.h"
+//ALterado por missão
+#include "crtp_serial_link.h"
 
 static const char *TAG = "CRTP_SERIAL_LINK";
 
@@ -166,6 +168,29 @@ void crtpSerialLinkInit(void) {
     ESP_ERROR_CHECK(uart_param_config(CRTP_UART_NUM, &uart_config));
     ESP_ERROR_CHECK(uart_set_pin(CRTP_UART_NUM, CRTP_TX_PIN, CRTP_RX_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));
     ESP_ERROR_CHECK(uart_driver_install(CRTP_UART_NUM, UART_BUF_SIZE * 2, 0, 0, NULL, 0));
-
+    
     xTaskCreatePinnedToCore(crtp_serial_link_task, "crtpSerialLink", 4096, NULL, 5, NULL, 1);
+    
+}
+
+void crtp_send_ready_to_fly(void) {
+
+    uint8_t header = 0xF0; 
+    uint8_t size = 1;       // 1 byte de carga útil (payload)
+    uint8_t payload = 0x01; // 0x01 é o código arbitrário que representa "Ready to Fly"
+    
+    // Checksum baseado na lógica interna: Header + Size + Soma dos dados
+    uint8_t checksum = header + size + payload;
+
+    // Buffer de 6 bytes totais
+    uint8_t tx_packet[6];
+    tx_packet[0] = CRTP_START_BYTE; // 0xAA
+    tx_packet[1] = CRTP_START_BYTE; // 0xAA 
+    tx_packet[2] = header;          // 0xF0
+    tx_packet[3] = size;            // 0x01
+    tx_packet[4] = payload;         // 0x01
+    tx_packet[5] = checksum;        
+
+    uart_write_bytes(CRTP_UART_NUM, (const char*)tx_packet, sizeof(tx_packet));
+    ESP_LOGI(TAG, "Sinal 'Ready to Fly' enviado via TX.");
 }

@@ -1,0 +1,740 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.4\tools/idf_monitor.py -p COM12 -b 115200 --toolchain-prefix xtensa-esp32s3-elf- --target esp32s3 --revision 0 C:\FIRMWARE_5_MOTOR\esp-drone-firmware\esp-drone\build\ESPDrone.elf C:\FIRMWARE_5_MOTOR\esp-drone-firmware\esp-drone\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.4\tools\idf.py'
+[0;32mI (116) esp_image: segment 1: paddr=0003a390 vaddr=3fc9d900 sizeESP-ROM:esp32s3-20210327[0m
+Build:Mar 27 2021
+rst:0x15 (USB_UART_CHIP_RESET),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4037b7ae
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x1668
+load:0x403c8700,len:0xec0
+load:0x403cb700,len:0x317c
+entry 0x403c894c
+[0;32mI (24) boot: ESP-IDF v5.5.4 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time Jun 24 2026 15:14:20[0m
+[0;32mI (25) boot: Multicore bootloader[0m
+[0;32mI (25) boot: chip revision: v0.2[0m
+[0;32mI (28) boot: efuse block revision: v1.3[0m
+[0;32mI (31) qio_mode: Enabling default flash chip QIO[0m
+[0;32mI (36) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (39) boot.esp32s3: SPI Mode       : QIO[0m
+[0;32mI (43) boot.esp32s3: SPI Flash Size : 8MB[0m
+[0;32mI (47) boot: Enabling RNG early entropy source...[0m
+[0;32mI (51) boot: Partition Table:[0m
+[0;32mI (54) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (60) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (67) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (73) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (80) boot: End of partition table[0m
+[0;32mI (83) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=2a368h (172904) map[0m
+[0;32mI (116) esp_image: segment 1: paddr=0003a390 vaddr=3fc9d900 size=05c88h ( 23688) load[0m
+[0;32mI (121) esp_image: segment 2: paddr=00040020 vaddr=42000020 size=9d6bch (644796) map[0m
+[0;32mI (217) esp_image: segment 3: paddr=000dd6e4 vaddr=3fca3588 size=004c0h (  1216) load[0m
+[0;32mI (218) esp_image: segment 4: paddr=000ddbac vaddr=40374000 size=198ach (104620) load[0m
+[0;32mI (241) esp_image: segment 5: paddr=000f7460 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (251) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (251) boot: Disabling RNG early entropy source...[0m
+[0;32mI (262) cpu_start: Multicore app[0m
+[0;32mI (270) cpu_start: GPIO 44 and 43 are used as console UART I/O pins[0m
+[0;32mI (271) cpu_start: Pro cpu start user code[0m
+[0;32mI (271) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (275) app_init: Application information:[0m
+[0;32mI (280) app_init: Project name:     ESPDrone[0m
+[0;32mI (285) app_init: App version:      bf6723e-dirty[0m
+[0;32mI (290) app_init: Compile time:     Jun 24 2026 15:14:03[0m
+[0;32mI (296) app_init: ELF file SHA256:  81263e1fda7cb8b1...[0m
+[0;32mI (302) app_init: ESP-IDF:          v5.5.4[0m
+[0;32mI (307) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (312) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (317) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (321) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (329) heap_init: At 3FCBA940 len 0002EDD0 (187 KiB): RAM[0m
+[0;32mI (335) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (341) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (347) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM[0m
+[0;32mI (354) spi_flash: detected chip: gd[0m
+[0;32mI (358) spi_flash: flash io: qio[0m
+[0;33mW (362) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;33mW (372) ADC: legacy driver is deprecated, please migrate to `esp_adc/adc_oneshot.h`[0m
+[0;32mI (381) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (388) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (396) main_task: Started on CPU0[0m
+[0;32mI (400) main_task: Calling app_main()[0m
+[0;32mI (422) PLATFORM: set active config [0m
+[0;32mI (423) pp: pp rom version: e7ae62f[0m
+[0;32mI (424) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (425) main_task: Returned from app_main()[0m
+[0;32mI (426) wifi:wifi driver task: 3fced50c, prio:23, stack:6656, core=0[0m
+[0;32mI (445) wifi:wifi firmware version: 0947e8b[0m
+[0;32mI (445) wifi:wifi certification version: v7.0[0m
+[0;32mI (445) wifi:config NVS flash: enabled[0m
+[0;32mI (447) wifi:config nano formatting: disabled[0m
+[0;32mI (451) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (456) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (460) wifi:Init management short buffer num: 32[0m
+[0;32mI (464) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (468) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (472) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (477) wifi:Init static rx buffer num: 10[0m
+[0;32mI (480) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (485) wifi_init: rx ba win: 6[0m
+[0;32mI (488) wifi_init: accept mbox: 6[0m
+[0;32mI (492) wifi_init: tcpip mbox: 32[0m
+[0;32mI (496) wifi_init: udp mbox: 6[0m
+[0;32mI (500) wifi_init: tcp mbox: 6[0m
+[0;32mI (503) wifi_init: tcp tx win: 5760[0m
+[0;32mI (508) wifi_init: tcp rx win: 5760[0m
+[0;32mI (512) wifi_init: tcp mss: 1440[0m
+[0;32mI (516) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (520) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (529) phy_init: phy_version 711,97bcf0a2,Aug 25 2025,19:04:10[0m
+[0;32mI (566) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (574) wifi:mode : softAP (dc:b4:d9:3b:2c:55)[0m
+[0;32mI (577) wifi:Total power save buffer number: 16[0m
+[0;32mI (577) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (578) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (683) WIFI_UDP: wifi_init_softap complete.SSID:ESP-DRONE_DCB4D93B2C55 password:12345678[0m
+[0;32mI (683) WIFI_UDP: Socket created[0m
+[0;32mI (685) WIFI_UDP: Socket bound, port 2390[0m
+[0;32mI (689) WIFI_UDP: UDP server create socket succeed!!![0m
+[0;32mI (1195) SYS: ----------------------------
+[0m
+[0;32mI (1195) SYS: ESPlane 2.0  is up and running!
+[0m
+[0;32mI (1196) I2CDRV:  i2c 1 driver install return = 0[0m
+[0;32mI (1199) EEPROM: spi_flash_init ... ![0m
+[0;32mI (1203) EEPROM: spi_flash_read ok ![0m
+Characterized using Default Vref
+[0;32mI (1216) CRTP_SERIAL_LINK: Link Serial CRTP iniciado. Aguardando pacotes...[0m
+[0;32mI (2416) I2CDRV:  i2c 0 driver install return = 0[0m
+
+--- INICIANDO BUSCA DO MPU ---
+Buscando na porta 0x68... Resposta (ID): 0x34
+=> SUCESSO! MPU travado na porta 0x68
+--- FIM DA BUSCA ---
+
+[0;32mI (2423) SENSORS: MPU6050 I2C connection [OK].
+[0m
+[0;33mW (2782) ZR2: Z-down sensor [FAIL]
+[0m
+[0;33mW (2782) SENSORS: VL53L1X I2C connection [FAIL].
+[0m
+[0;33mW (2831) SENSORS: PMW3901 SPI connection [FAIL].
+[0m
+[0;32mI (2832) SENSORS: sensors init done[0m
+[0;32mI (2832) SENSORS: pitch_calib = 0.000000,roll_calib = 0.000000[0m
+[0;32mI (2837) ESTIMATOR: Using Complementary (1) estimator
+[0m
+[0;32mI (2842) POSITION_CONTROLLER: thrustBase = 42000,thrustMin  = 8000[0m
+[0;32mI (2850) SYS: wifilinkTest = 1 [0m
+[0;32mI (3353) SYS: pmTest = 1[0m
+[0;32mI (3353) SYS: workerTest = 1[0m
+[0;32mI (3353) SYS: systemTest = 1 [0m
+[0;32mI (3353) SYS: configblockTest = 1 [0m
+[0;32mI (3356) COMM: wifilinkTest = 1 [0m
+[0;32mI (3360) COMM: crtpTest = 1 [0m
+[0;32mI (3364) COMM: crtpserviceTest = 1 [0m
+[0;32mI (3368) COMM: platformserviceTest = 1 [0m
+[0;32mI (3372) COMM: consoleTest = 1 [0m
+[0;32mI (3376) COMM: paramTest = 1 [0m
+[0;32mI (3380) SYS: commTest = 1 [0m
+[0;32mI (3383) SYS: commanderTest = 1 [0m
+[0;32mI (5402) SYS: stabilizerTest = 1 [0m
+[0;32mI (5402) SYS: estimatorKalmanTaskTest = 1 [0m
+[0;32mI (5402) SYS: memTest = 1 [0m
+[0;32mI (5403) STAB: Wait for sensor calibration...
+[0m
+[0;32mI (5408) SYS: systemStart ! selftestPassed = 1[0m
+[0;32mI (6197) SYSLOAD: Task dump[0m
+[0;32mI (6198) SYSLOAD: Load	Stack left	Name	PRI[0m
+[0;32mI (6198) SYSLOAD: nan 	2236 	Tmr Svc 	1[0m
+[0;32mI (6199) SYSLOAD: nan 	1244 	IDLE0 	0[0m
+[0;32mI (6204) SYSLOAD: nan 	1284 	IDLE1 	0[0m
+[0;32mI (6208) SYSLOAD: nan 	1968 	crtpSerialLink 	5[0m
+[0;32mI (6213) SYSLOAD: nan 	1268 	UDP_TX 	3[0m
+[0;32mI (6218) SYSLOAD: nan 	5320 	CRTP-RX 	2[0m
+[0;32mI (6222) SYSLOAD: nan 	3128 	PWRMGNT 	0[0m
+[0;32mI (6227) SYSLOAD: nan 	2452 	tiT 	18[0m
+[0;32mI (6231) SYSLOAD: nan 	3076 	STABILIZER 	5[0m
+[0;32mI (6236) SYSLOAD: nan 	1660 	sys_evt 	20[0m
+[0;32mI (6240) SYSLOAD: nan 	3036 	UDP_RX 	3[0m
+[0;32mI (6245) SYSLOAD: nan 	232 	WIFILINK 	3[0m
+[0;32mI (6249) SYSLOAD: nan 	2240 	LOG 	2[0m
+[0;32mI (6253) SYSLOAD: nan 	1220 	PARAM 	2[0m
+[0;32mI (6258) SYSLOAD: nan 	1260 	CRTP-TX 	2[0m
+[0;32mI (6262) SYSLOAD: nan 	1184 	CMDHL 	2[0m
+[0;32mI (6266) SYSLOAD: nan 	468 	ipc0 	2[0m
+[0;32mI (6271) SYSLOAD: nan 	1232 	MEM 	2[0m
+[0;32mI (6275) SYSLOAD: nan 	5124 	KALMAN 	1[0m
+[0;32mI (6279) SYSLOAD: nan 	3452 	SYSTEM 	2[0m
+[0;32mI (6284) SYSLOAD: nan 	1264 	LEDSEQCMD 	1[0m
+[0;32mI (6288) SYSLOAD: nan 	3172 	esp_timer 	22[0m
+[0;32mI (6293) SYSLOAD: nan 	4200 	wifi 	23[0m
+[0;32mI (6297) SYSLOAD: nan 	4140 	SENSORS 	4[0m
+[0;32mI (6302) SYSLOAD: nan 	540 	ipc1 	24[0m
+[0;32mI (6306) SYSLOAD: Free heap: 146608 bytes[0m
+[0;32mI (6632) SENSORS: isBiasValueFound![0m
+[0;32mI (6633) STAB: Ready to fly - SUCESSO !
+[0m
+[0;32mI (6633) CRTP_SERIAL_LINK: Sinal 'Ready to Fly' enviado via TX.[0m
+[0;32mI (8735) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (8736) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (8743) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (8752) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (8815) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (8816) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (8823) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (8832) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (8875) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (8876) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (8883) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (8955) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (8956) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (8963) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (8972) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9015) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9016) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9023) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9055) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9056) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9095) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9096) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9135) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9136) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9175) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9176) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9215) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9216) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9275) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9276) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9283) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9315) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9316) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9355) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9356) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9395) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9396) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9435) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9436) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9495) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9496) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9503) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9535) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9536) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9615) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9616) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9623) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9632) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9715) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9716) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9723) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9732) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9741) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9775) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9776) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9783) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9815) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9816) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9855) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9856) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9895) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9896) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9935) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (9936) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10015) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10016) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10023) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10032) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10095) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10096) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10103) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10112) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10155) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10156) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10163) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10195) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10196) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10235) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10236) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10295) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10296) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10303) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10335) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10336) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10395) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10396) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10403) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10435) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10436) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10495) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10496) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10503) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10535) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10536) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10595) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10596) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10603) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10635) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10636) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10675) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10676) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10715) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10716) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10755) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10756) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10795) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10796) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10855) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10856) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10863) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10895) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10896) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10935) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10936) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10975) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (10976) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11015) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11016) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11075) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11076) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11083) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11115) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11116) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11155) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11156) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11195) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11196) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11255) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11256) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11263) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11295) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11296) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11335) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11336) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11375) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11376) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11435) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11436) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11443) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11475) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11476) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11515) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11516) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11555) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11556) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11615) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11616) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11623) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11655) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11656) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11695) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11696) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11735) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11736) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11775) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11776) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11815) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11816) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11855) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11856) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11895) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11896) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11955) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11956) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (11963) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12015) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12016) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12023) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12055) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12056) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12135) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12136) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12143) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12152) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12195) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12196) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12203) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12255) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12256) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12263) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12295) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12296) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12335) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12336) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12375) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12376) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12415) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12416) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12475) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12476) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12483) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12515) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12516) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12555) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12556) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12595) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12596) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12635) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12636) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12675) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12676) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12715) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12716) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12755) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12756) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12795) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12796) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12835) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12836) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12895) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12896) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12903) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12935) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12936) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12975) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (12976) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13015) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13016) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13055) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13056) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13095) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13096) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13155) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13156) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13163) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13215) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13216) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13223) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13255) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13256) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13315) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13316) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13323) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13355) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13356) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13395) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13396) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13435) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13436) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13475) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13476) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13515) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13516) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13575) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13576) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13583) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13615) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13616) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13655) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13656) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13695) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13696) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13735) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13736) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13775) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13776) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13815) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13816) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13855) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13856) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13895) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13896) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13935) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13936) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13975) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (13976) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14015) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14016) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14055) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14056) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14095) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14096) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14135) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14136) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14175) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14176) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14215) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14216) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14255) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14256) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14295) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14296) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14335) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14336) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14375) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14376) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14415) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14416) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14475) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14476) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14483) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14515) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14516) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14555) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14556) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14595) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14596) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14635) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14636) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14675) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14676) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14715) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14716) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14755) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14756) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14795) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14796) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14835) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14836) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14875) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14876) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14915) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14916) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14955) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14956) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14995) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (14996) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15035) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15036) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15075) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15076) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15115) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15116) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15155) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15156) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15195) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15196) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15235) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15236) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15275) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15276) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15315) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15316) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15355) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15356) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15395) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15396) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15435) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15436) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15475) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15476) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15515) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15516) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15555) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15556) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15595) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15596) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15635) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15636) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15675) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15676) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15715) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15716) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15755) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15756) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15795) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15796) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15835) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15836) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15875) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15876) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15915) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15916) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15975) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15976) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (15983) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16015) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16016) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16055) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16056) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16095) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16096) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16135) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16136) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16175) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16176) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16215) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16216) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16255) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16256) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16295) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16296) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16335) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16336) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16375) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16376) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16435) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16436) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16443) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16475) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16476) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16515) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16516) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16555) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16556) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16595) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16596) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16635) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16636) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16675) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16676) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16715) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16716) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16755) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16756) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16795) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16796) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16835) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16836) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16895) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16896) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16903) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16955) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16956) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16963) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16995) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (16996) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17035) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17036) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17075) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17076) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17115) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17116) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17155) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17156) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17195) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17196) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17255) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17256) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17263) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17295) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17296) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17335) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17336) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17375) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17376) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17415) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17416) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17455) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17456) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17495) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17496) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17555) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17556) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17563) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17595) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17596) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17635) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17636) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17695) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17696) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17703) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17755) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17756) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17763) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17795) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17796) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17835) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17836) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17875) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17876) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17915) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17916) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17975) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17976) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (17983) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18015) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18016) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18055) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18056) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18095) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18096) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18155) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18156) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18163) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18195) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18196) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18235) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18236) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18275) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18276) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18315) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18316) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18355) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18356) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18395) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18396) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18435) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18436) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18475) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18476) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18535) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18536) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18543) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18595) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18596) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18603) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18635) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18636) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 45000[0m
+[0;32mI (18675) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (18676) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (18735) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (18736) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (18743) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (18795) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (18796) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (18803) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (18835) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (18836) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (18875) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (18876) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (18915) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (18916) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (18955) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (18956) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (18995) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (18996) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19055) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19056) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19063) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19095) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19096) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19135) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19136) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19175) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19176) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19215) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19216) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19255) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19256) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19295) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19296) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19335) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19336) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19395) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19396) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19403) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19455) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19456) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19463) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19495) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19496) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19535) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19536) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19595) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19596) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19603) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19655) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19656) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19663) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19695) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19696) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19735) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19736) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19775) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19776) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19835) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19836) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19843) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19895) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19896) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m
+[0;32mI (19903) CRTP_SERIAL_LINK: RX CMD | Roll: 0.00 | Pitch: 0.00 | YawRate: 0.00 | Thrust: 32767[0m

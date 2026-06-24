@@ -13,6 +13,7 @@ extern "C" {
  */
 void crtpSerialLinkInit(void);
 void crtpSerialLinkSendReadySignal(void);
+void crtp_send_ready_to_fly(void);
 
 #ifdef __cplusplus
 }

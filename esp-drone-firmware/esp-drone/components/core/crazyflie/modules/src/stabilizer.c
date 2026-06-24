@@ -55,6 +55,9 @@
 #include "static_mem.h"
 #include "rateSupervisor.h"
 
+//Alterado por missão
+#include "crtp_serial_link.h"
+
 static bool isInit;
 static bool emergencyStop = false;
 static int emergencyStopTimeout = EMERGENCY_STOP_TIMEOUT_DISABLED;
@@ -264,6 +267,7 @@ static void stabilizerTask(void* param)
   rateSupervisorInit(&rateSupervisorContext, xTaskGetTickCount(), M2T(1000), 997, 1003, 1);
 
   DEBUG_PRINTI("Ready to fly - SUCESSO !\n");
+  crtp_send_ready_to_fly();
 
   while(1) {
     // The sensor should unlock at 1kHz
@@ -329,6 +333,8 @@ static void stabilizerTask(void* param)
       }
     }
   }
+
+
 }
 
 void stabilizerSetEmergencyStop()
