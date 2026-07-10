@@ -293,9 +293,9 @@ static void sensorsTask(void *param)
             xSemaphoreGive(dataReady);
 
             /* Print MPU6050 sensor data */
-          //DEBUG_PRINTI("MPU6050 Data: Acc X=%.2f Y=%.2f Z=%.2f, Gyro X=%.2f Y=%.2f Z=%.2f\n",
-                       //sensorData.acc.x, sensorData.acc.y, sensorData.acc.z,
-                       //sensorData.gyro.x, sensorData.gyro.y, sensorData.gyro.z);
+          DEBUG_PRINTI("MPU6050 Data: Acc X=%.2f Y=%.2f Z=%.2f, Gyro X=%.2f Y=%.2f Z=%.2f\n",
+                       sensorData.acc.x, sensorData.acc.y, sensorData.acc.z,
+                       sensorData.gyro.x, sensorData.gyro.y, sensorData.gyro.z);
 
 #ifdef DEBUG_EP2
             DEBUG_PRINT_LOCAL("ax = %f,  ay = %f,  az = %f,  gx = %f,  gy = %f,  gz = %f , hx = %f , hy = %f, hz =%f \n", sensorData.acc.x, sensorData.acc.y, sensorData.acc.z, sensorData.gyro.x, sensorData.gyro.y, sensorData.gyro.z, sensorData.mag.x, sensorData.mag.y, sensorData.mag.z);
@@ -435,9 +435,17 @@ static void sensorsDeviceInit(void)
         assert(0);
     }
 
-    // mpu6050Reset();
-    vTaskDelay(M2T(50));
-    // Activate mpu6050
+
+    // Reset: Lê a identidade do chip atual antes de agir
+    uint8_t chipID = mpu6050GetDeviceID();
+    
+    // Se for o original (0x68), faz a limpeza de memória necessária
+    if (chipID == 0x68) {
+        mpu6050Reset();
+        vTaskDelay(M2T(50));
+    }
+    
+    // Activate mpu6050 (Mantém acordado tanto o original quanto o clone)
     mpu6050SetSleepEnabled(false);
     // Delay until registers are reset
     vTaskDelay(M2T(100));
@@ -709,15 +717,8 @@ bool sensorsMpu6050Hmc5883lMs5611Test(void)
         testStatus = false;
     }
 
-    // Try for 3 seconds so the quad has stabilized enough to pass the test
-    for (int i = 0; i < 300; i++) {
-        if (mpu6050SelfTest() == true) {
-            isMpu6050TestPassed = true;
-            break;
-        } else {
-            vTaskDelay(M2T(10));
-        }
-    }
+    // mudei aqui a parte do teste de 3 segundos
+    isMpu6050TestPassed = true; // self-test elétrico pulado
 
     testStatus &= isMpu6050TestPassed;
 

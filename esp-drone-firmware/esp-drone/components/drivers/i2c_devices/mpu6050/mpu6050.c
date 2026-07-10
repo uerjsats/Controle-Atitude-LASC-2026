@@ -46,6 +46,8 @@ static bool isInit;
 /** Default constructor, uses default I2C address.
  * @see MPU6050_DEFAULT_ADDRESS
  */
+/** Dessa linha 49 até a 107 eu alterei**/
+
 void mpu6050Init(I2C_Dev *i2cPort)
 {
     if (isInit) {
