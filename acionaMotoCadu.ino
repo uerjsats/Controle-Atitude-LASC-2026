@@ -90,6 +90,12 @@
 
 unsigned long ultimoPacoteValido = 0;
 
+#define CH_M1 0
+#define CH_M2 1
+#define CH_M3 2
+#define CH_M4 3
+#define CH_M5 4
+
 
 // ============================================================
 // 6. ESTRUTURA DO PACOTE CRTP
