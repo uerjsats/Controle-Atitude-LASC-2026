@@ -1,4 +1,4 @@
-```cpp
+
 // ============================================================
 // XIAO ESP32-S3
 // RECEPTOR CRTP + CONTROLE DE 5 MOTORES
@@ -866,4 +866,3 @@ void loop() {
 
     verificarWatchdog();
 }
-```
