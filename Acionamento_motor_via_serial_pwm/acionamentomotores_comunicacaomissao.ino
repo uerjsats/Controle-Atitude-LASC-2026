@@ -1,258 +1,232 @@
 #include <Arduino.h>
 
 // =====================================================
-// PINOS DOS MOTORES (XIAO ESP32-S3)
+// 1. PINOS E CONFIGURAÇÕES DE HARDWARE (XIAO ESP32-S3)
 // =====================================================
-#define MOTOR1 1
-#define MOTOR2 3
-#define MOTOR3 4
-#define MOTOR4 9
-#define MOTOR5 7
+#define MOTOR1             1
+#define MOTOR2             3
+#define MOTOR3             4
+#define MOTOR4             9
+#define MOTOR5             7
 
-// =====================================================
-// CONFIGURAÇÃO PWM
-// =====================================================
-#define PWM_FREQ        20000
-#define PWM_RESOLUTION  8       // 0 a 255
+#define PWM_FREQ           20000
+#define PWM_RESOLUTION     8
 
-// =====================================================
-// COMUNICAÇÃO UART (CRTP COM OUTRO ESP32)
-// =====================================================
-#define UART_RX_PIN     44      // Conecte ao TX do outro ESP32
-#define UART_TX_PIN     43      // Conecte ao RX do outro ESP32
-#define UART_BAUDRATE   115200
-
-#define CRTP_START_BYTE   0xAA
-#define COMMANDER_HEADER  0x30
-
-// Variáveis de controle de voo
-float g_roll = 0.0, g_pitch = 0.0, g_yaw = 0.0;
-uint16_t g_thrust = 0;
-unsigned long last_packet_time = 0;
+#define CRTP_TX_PIN        43       
+#define CRTP_RX_PIN        44       
+#define CRTP_BAUDRATE      115200   
 
 // =====================================================
-// DECLARAÇÃO DE FUNÇÕES
+// 2. DEFINIÇÕES DO PROTOCOLO CRTP SERIAL
 // =====================================================
-void acionarMotor(int motor, int potencia_percent);
-void pararTodos();
-void setMotorPWM(int motor_pin, int pwm_val);
-void aplicarComandosVoo(float roll, float pitch, float yaw, uint16_t thrust);
-void enviarReadyToFly();
-void processarUART_CRTP();
-void processarComandosSerialUSB();
+#define CRTP_START_BYTE    0xAA     
+#define CRTP_MAX_DATA_SIZE 30       
 
-// =====================================================
-// SETUP
-// =====================================================
-void setup() {
-  // Serial USB para depuração/comandos manuais
-  Serial.begin(115200);
-  delay(1000);
+typedef struct {
+    uint8_t header;
+    uint8_t size;
+    uint8_t data[CRTP_MAX_DATA_SIZE];
+    uint8_t checksum;
+} CrtpPacket_t;
 
-  // Configura PWM nos pinos dos motores
-  ledcAttach(MOTOR1, PWM_FREQ, PWM_RESOLUTION);
-  ledcAttach(MOTOR2, PWM_FREQ, PWM_RESOLUTION);
-  ledcAttach(MOTOR3, PWM_FREQ, PWM_RESOLUTION);
-  ledcAttach(MOTOR4, PWM_FREQ, PWM_RESOLUTION);
-  ledcAttach(MOTOR5, PWM_FREQ, PWM_RESOLUTION);
+typedef enum { 
+    STATE_WAIT_START, 
+    STATE_HEADER, 
+    STATE_SIZE, 
+    STATE_DATA, 
+    STATE_CHECKSUM 
+} CrtpRxState_t;
 
-  pararTodos();
-
-  // Inicializa UART de comunicação com o transmissor CRTP
-  Serial1.begin(UART_BAUDRATE, SERIAL_8N1, UART_RX_PIN, UART_TX_PIN);
-
-  Serial.println("========================================");
-  Serial.println("  RECEPTOR CRTP + CONTROLE 5 MOTORES");
-  Serial.println("           XIAO ESP32-S3");
-  Serial.println("========================================");
-
-  // Envia o pacote para liberar a transmissão do outro microcontrolador
-  enviarReadyToFly();
-}
+CrtpRxState_t rx_state = STATE_WAIT_START;
+CrtpPacket_t rx_packet;
+uint8_t data_idx = 0;
+uint8_t calculated_checksum = 0;
 
 // =====================================================
-// LOOP PRINCIPAL
+// 3. FUNÇÕES DE CONTROLE DOS MOTORES
 // =====================================================
-void loop() {
-  // 1. Processa pacotes de voo recebidos pela UART (Serial1)
-  processarUART_CRTP();
+void acionarMotor(int motor, int potencia) {
+    int pwm = map(potencia, 0, 100, 0, 255);
 
-  // 2. Processa comandos manuais digitados no Monitor Serial (Serial USB)
-  processarComandosSerialUSB();
-
-  // 3. Failsafe: se ficar mais de 500ms sem receber pacote e o motor estava ligado, desliga
-  if (last_packet_time > 0 && (millis() - last_packet_time > 500)) {
-    if (g_thrust > 0) {
-      Serial.println("[FAILSAFE] Perda de sinal CRTP! Desligando motores...");
-      pararTodos();
-      g_thrust = 0;
+    switch (motor) {
+        case 1: ledcWrite(MOTOR1, pwm); break;
+        case 2: ledcWrite(MOTOR2, pwm); break;
+        case 3: ledcWrite(MOTOR3, pwm); break;
+        case 4: ledcWrite(MOTOR4, pwm); break;
+        case 5: ledcWrite(MOTOR5, pwm); break;
+        default: return;
     }
-  }
-}
 
-// =====================================================
-// ENVIA PACOTE "READY TO FLY" (0xAA 0xAA 0xF0 0x01 0x01 0xF2)
-// =====================================================
-void enviarReadyToFly() {
-  uint8_t rtf_packet[6] = {0xAA, 0xAA, 0xF0, 0x01, 0x01, 0xF2};
-  Serial1.write(rtf_packet, sizeof(rtf_packet));
-  Serial.println(">> Sinal [Ready to Fly] enviado via Serial1.");
-}
-
-// =====================================================
-// PARSER CRTP (RECEBE ROLL, PITCH, YAW, THRUST)
-// =====================================================
-void processarUART_CRTP() {
-  static uint8_t rx_state = 0;
-  static uint8_t payload[14];
-  static uint8_t idx = 0;
-  static uint8_t checksum = 0;
-
-  while (Serial1.available() > 0) {
-    uint8_t c = Serial1.read();
-
-    switch (rx_state) {
-      case 0: // Primeiro Start Byte
-        if (c == CRTP_START_BYTE) rx_state = 1;
-        break;
-
-      case 1: // Segundo Start Byte
-        if (c == CRTP_START_BYTE) rx_state = 2;
-        else rx_state = 0;
-        break;
-
-      case 2: // Header do Commander
-        if (c == COMMANDER_HEADER) {
-          checksum = c;
-          rx_state = 3;
-        } else {
-          rx_state = 0;
-        }
-        break;
-
-      case 3: // Tamanho do payload (14 bytes)
-        if (c == 14) {
-          checksum += c;
-          idx = 0;
-          rx_state = 4;
-        } else {
-          rx_state = 0;
-        }
-        break;
-
-      case 4: // Leitura dos 14 bytes de dados
-        payload[idx++] = c;
-        checksum += c;
-        if (idx == 14) rx_state = 5;
-        break;
-
-      case 5: // Validação do Checksum
-        if (c == checksum) {
-          memcpy(&g_roll, &payload[0], 4);
-          memcpy(&g_pitch, &payload[4], 4);
-          memcpy(&g_yaw, &payload[8], 4);
-          memcpy(&g_thrust, &payload[12], 2);
-
-          last_packet_time = millis();
-
-          // Aplica potências aos motores
-          aplicarComandosVoo(g_roll, g_pitch, g_yaw, g_thrust);
-        }
-        rx_state = 0;
-        break;
-    }
-  }
-}
-
-// =====================================================
-// CONVERSÃO E DISTRIBUIÇÃO DE FORÇA NOS 5 MOTORES
-// =====================================================
-void aplicarComandosVoo(float roll, float pitch, float yaw, uint16_t thrust) {
-  // Converte o thrust (0-65535) para escala PWM 8-bit (0-255)
-  int32_t pwm_base = map(thrust, 0, 65535, 0, 255);
-
-  if (pwm_base <= 5) {
-    pararTodos();
-    return;
-  }
-
-  // Motor Central (M5) assume o empuxo principal
-  setMotorPWM(MOTOR5, pwm_base);
-
-  // Motores periféricos (M1 a M4) para atitude em cruz/X
-  // Usa int32_t para evitar underflow matemático antes da saturação
-  int32_t sub_base = pwm_base / 2;
-  int32_t m1 = sub_base + (int32_t)pitch + (int32_t)yaw;
-  int32_t m2 = sub_base - (int32_t)roll  - (int32_t)yaw;
-  int32_t m3 = sub_base - (int32_t)pitch + (int32_t)yaw;
-  int32_t m4 = sub_base + (int32_t)roll  - (int32_t)yaw;
-
-  setMotorPWM(MOTOR1, m1);
-  setMotorPWM(MOTOR2, m2);
-  setMotorPWM(MOTOR3, m3);
-  setMotorPWM(MOTOR4, m4);
-}
-
-// =====================================================
-// FUNÇÕES DE ACIONAMENTO COM LIMITAÇÃO (CLIPPING)
-// =====================================================
-void setMotorPWM(int motor_pin, int pwm_val) {
-  // Garante que o PWM permaneça estritamente entre 0 e 255
-  int clamped = constrain(pwm_val, 0, 255);
-  ledcWrite(motor_pin, clamped);
-}
-
-void acionarMotor(int motor, int potencia_percent) {
-  int pwm = map(potencia_percent, 0, 100, 0, 255);
-  switch (motor) {
-    case 1: setMotorPWM(MOTOR1, pwm); break;
-    case 2: setMotorPWM(MOTOR2, pwm); break;
-    case 3: setMotorPWM(MOTOR3, pwm); break;
-    case 4: setMotorPWM(MOTOR4, pwm); break;
-    case 5: setMotorPWM(MOTOR5, pwm); break;
-  }
+    Serial.printf("[MOTOR] M%d -> %d%% (PWM: %d)\n", motor, potencia, pwm);
 }
 
 void pararTodos() {
-  ledcWrite(MOTOR1, 0);
-  ledcWrite(MOTOR2, 0);
-  ledcWrite(MOTOR3, 0);
-  ledcWrite(MOTOR4, 0);
-  ledcWrite(MOTOR5, 0);
+    ledcWrite(MOTOR1, 0);
+    ledcWrite(MOTOR2, 0);
+    ledcWrite(MOTOR3, 0);
+    ledcWrite(MOTOR4, 0);
+    ledcWrite(MOTOR5, 0);
 }
 
 // =====================================================
-// PARSER MANUAL VIA USB SERIAL
+// 4. FUNÇÕES AUXILIARES E PROTOCOLO CRTP
 // =====================================================
-void processarComandosSerialUSB() {
-  if (Serial.available() > 0) {
+void printHexBuffer(uint8_t* buffer, uint8_t size) {
+    Serial.print("DADOS (Hex): ");
+    for (int i = 0; i < size; i++) {
+        Serial.printf("%02X ", buffer[i]);
+    }
+    Serial.println(); 
+}
+
+void send_crtp_ack(uint8_t header) {
+    uint8_t ack_packet[5];
+    ack_packet[0] = CRTP_START_BYTE; 
+    ack_packet[1] = CRTP_START_BYTE;
+    ack_packet[2] = header;          
+    ack_packet[3] = 0x00;
+    ack_packet[4] = header + 0x00;
+
+    Serial1.write(ack_packet, sizeof(ack_packet));
+    Serial.printf("<= ACK Enviado (Porta/Canal 0x%02X)\n\n", header);
+}
+
+void handle_crtp_payload(uint8_t port, uint8_t channel, uint8_t* data, uint8_t size) {
+    // Exemplo de integração: se o payload tiver [motor, potencia]
+    // if (size >= 2) {
+    //     acionarMotor(data[0], data[1]);
+    // }
+}
+
+void process_crtp_byte(uint8_t byte) {
+    switch (rx_state) {
+        case STATE_WAIT_START:
+            if (byte == CRTP_START_BYTE) rx_state = STATE_HEADER;
+            break;
+
+        case STATE_HEADER:
+            if (byte == CRTP_START_BYTE) break;
+            rx_packet.header = byte;
+            calculated_checksum = byte;
+            rx_state = STATE_SIZE;
+            break;
+
+        case STATE_SIZE:
+            rx_packet.size = byte;
+            calculated_checksum += byte;
+            if (rx_packet.size > CRTP_MAX_DATA_SIZE) {
+                rx_state = STATE_WAIT_START;
+            } else if (rx_packet.size == 0) {
+                rx_state = STATE_CHECKSUM;
+            } else {
+                data_idx = 0;
+                rx_state = STATE_DATA;
+            }
+            break;
+
+        case STATE_DATA:
+            rx_packet.data[data_idx++] = byte;
+            calculated_checksum += byte;
+            if (data_idx >= rx_packet.size) rx_state = STATE_CHECKSUM;
+            break;
+
+        case STATE_CHECKSUM:
+            rx_packet.checksum = byte;
+            
+            if (calculated_checksum == rx_packet.checksum) {
+                uint8_t port = (rx_packet.header >> 4) & 0x0F;
+                uint8_t channel = rx_packet.header & 0x0F;
+                
+                Serial.printf("=> RECEBIDO SERIAL1 | Porta: %d, Canal: %d, Tamanho: %d bytes\n", port, channel, rx_packet.size);
+                if (rx_packet.size > 0) {
+                    printHexBuffer(rx_packet.data, rx_packet.size);
+                }
+                
+                handle_crtp_payload(port, channel, rx_packet.data, rx_packet.size);
+                send_crtp_ack(rx_packet.header);
+            } else {
+                Serial.println("Erro: Falha de Checksum no pacote serial CRTP!");
+            }
+            
+            rx_state = STATE_WAIT_START;
+            break;
+    }
+}
+
+// =====================================================
+// 5. PARSER DE COMANDOS DO MONITOR SERIAL (Serial USB)
+// =====================================================
+void process_serial_command() {
+    if (Serial.available() <= 0) return;
+
     String comando = Serial.readStringUntil('\n');
     comando.trim();
 
     if (comando.length() == 0) return;
 
     if (comando == "0") {
-      pararTodos();
-      Serial.println("TODOS OS MOTORES DESLIGADOS");
-      return;
-    }
-
-    if (comando.equalsIgnoreCase("rtf")) {
-      enviarReadyToFly();
-      return;
+        pararTodos();
+        Serial.println("\nTODOS OS MOTORES DESLIGADOS\n");
+        return;
     }
 
     int espaco = comando.indexOf(' ');
-    if (espaco != -1) {
-      int motor = comando.substring(0, espaco).toInt();
-      int potencia = comando.substring(espaco + 1).toInt();
-
-      if (motor >= 1 && motor <= 5 && potencia >= 0 && potencia <= 100) {
-        acionarMotor(motor, potencia);
-        Serial.printf("Motor %d -> %d%% (PWM: %d)\n", motor, potencia, map(potencia, 0, 100, 0, 255));
-      } else {
-        Serial.println("ERRO: Motor (1-5) ou Potencia (0-100%) invalidos.");
-      }
+    if (espaco == -1) {
+        Serial.println("\n[ERRO] Formato correto: MOTOR POTENCIA (ex: 2 50)\n");
+        return;
     }
-  }
+
+    int motor = comando.substring(0, espaco).toInt();
+    int potencia = comando.substring(espaco + 1).toInt();
+
+    if (motor < 1 || motor > 5) {
+        Serial.println("\n[ERRO] Motor deve ser de 1 a 5.\n");
+        return;
+    }
+
+    if (potencia < 0 || potencia > 100) {
+        Serial.println("\n[ERRO] Potência deve estar entre 0 e 100%.\n");
+        return;
+    }
+
+    acionarMotor(motor, potencia);
+}
+
+// =====================================================
+// SETUP & LOOP
+// =====================================================
+void setup() {
+    Serial.begin(115200);
+    delay(1000);
+
+    // Inicialização do PWM nos pinos dos motores
+    ledcAttach(MOTOR1, PWM_FREQ, PWM_RESOLUTION);
+    ledcAttach(MOTOR2, PWM_FREQ, PWM_RESOLUTION);
+    ledcAttach(MOTOR3, PWM_FREQ, PWM_RESOLUTION);
+    ledcAttach(MOTOR4, PWM_FREQ, PWM_RESOLUTION);
+    ledcAttach(MOTOR5, PWM_FREQ, PWM_RESOLUTION);
+    pararTodos();
+
+    // Inicialização da UART para o CRTP
+    Serial1.begin(CRTP_BAUDRATE, SERIAL_8N1, CRTP_RX_PIN, CRTP_TX_PIN);
+
+    Serial.println("========================================");
+    Serial.println("   XIAO ESP32-S3: CRTP RX + 5 MOTORES   ");
+    Serial.println("========================================");
+    Serial.println("Controle via Serial USB:");
+    Serial.println("  '0'       -> Desliga todos os motores");
+    Serial.println("  '<M> <P>' -> Liga Motor M (1-5) na potência P% (0-100)");
+    Serial.println("UART1 CRTP ativa (RX: 44, TX: 43)...");
+    Serial.println("========================================\n");
+}
+
+void loop() {
+    // 1. Processa comandos de texto vindos da Serial USB
+    process_serial_command();
+
+    // 2. Processa bytes binários CRTP vindos da Serial1
+    while (Serial1.available() > 0) {
+        uint8_t incoming_byte = Serial1.read();
+        process_crtp_byte(incoming_byte);
+    }
 }
