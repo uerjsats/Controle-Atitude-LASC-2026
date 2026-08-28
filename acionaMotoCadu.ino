@@ -140,15 +140,7 @@ uint8_t calculated_checksum = 0;
 // 8. ESTADO DOS MOTORES
 // ============================================================
 
-uint8_t motorPWM[5] = {
-
-    0,
-    0,
-    0,
-    0,
-    0
-
-};
+uint8_t motorPWM[5] = {0, 0, 0, 0, 0};
 
 
 // ============================================================
@@ -161,15 +153,10 @@ uint8_t motorPWM[5] = {
 // ------------------------------------------------------------
 
 void configurarMotores() {
-
     ledcAttach(MOTOR1, PWM_FREQ, PWM_RESOLUTION);
-
     ledcAttach(MOTOR2, PWM_FREQ, PWM_RESOLUTION);
-
     ledcAttach(MOTOR3, PWM_FREQ, PWM_RESOLUTION);
-
     ledcAttach(MOTOR4, PWM_FREQ, PWM_RESOLUTION);
-
     ledcAttach(MOTOR5, PWM_FREQ, PWM_RESOLUTION);
 
     pararTodos();
@@ -181,22 +168,16 @@ void configurarMotores() {
 // ------------------------------------------------------------
 
 void pararTodos() {
-
     motorPWM[0] = 0;
     motorPWM[1] = 0;
     motorPWM[2] = 0;
     motorPWM[3] = 0;
     motorPWM[4] = 0;
 
-
     ledcWrite(MOTOR1, 0);
-
     ledcWrite(MOTOR2, 0);
-
     ledcWrite(MOTOR3, 0);
-
     ledcWrite(MOTOR4, 0);
-
     ledcWrite(MOTOR5, 0);
 }
 
@@ -212,22 +193,17 @@ void atualizarMotores(
     uint8_t m4,
     uint8_t m5
 ) {
-
     motorPWM[0] = m1;
     motorPWM[1] = m2;
     motorPWM[2] = m3;
     motorPWM[3] = m4;
     motorPWM[4] = m5;
 
-
+    // Aplica o Duty Cycle (0 a 255) nos pinos configurados a 20 kHz
     ledcWrite(MOTOR1, m1);
-
     ledcWrite(MOTOR2, m2);
-
     ledcWrite(MOTOR3, m3);
-
     ledcWrite(MOTOR4, m4);
-
     ledcWrite(MOTOR5, m5);
 }
 
