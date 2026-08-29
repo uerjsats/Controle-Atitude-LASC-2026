@@ -204,6 +204,11 @@ void setup()
 {
     Serial.begin(115200);
 
+    Serial.println("Reiniciando o ESP32-S3...");
+    delay(1000); 
+  
+    ESP.restart(); // Executa o software reset
+
     // Configura e anexa PWM aos pinos dos motores
     ledcAttach(MOTOR1, PWM_FREQ, PWM_RESOLUTION);
     ledcAttach(MOTOR2, PWM_FREQ, PWM_RESOLUTION);
