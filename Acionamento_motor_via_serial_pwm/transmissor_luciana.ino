@@ -1,8 +1,7 @@
 #include <Arduino.h> 
+// CRTP - Transmissor
 
-// ---------------------------------------------------------
 // Definições de Hardware e UART
-// ---------------------------------------------------------
 #define TX_PIN        43       
 #define RX_PIN        44      
 #define BAUDRATE      115200   
@@ -10,9 +9,7 @@
 #define CRTP_START_BYTE  0xAA
 #define COMMANDER_HEADER 0x30 
 
-// ---------------------------------------------------------
 // Estrutura de Dados do Movimento (Payload)
-// ---------------------------------------------------------
 struct CommanderPayload {
     float roll;
     float pitch;    
@@ -20,9 +17,7 @@ struct CommanderPayload {
     uint16_t thrust; 
 } __attribute__((packed)); 
 
-// ---------------------------------------------------------
 // Variáveis de Frequência, Tempo e Sincronização
-// ---------------------------------------------------------
 unsigned long lastCommandTime = 0;
 const unsigned long COMMAND_INTERVAL = 20; // 50Hz (20ms)
 
@@ -32,9 +27,7 @@ const unsigned long STATE_DURATION = 10000;
 // Flag de bloqueio para o sinal "Ready to Fly"
 bool is_ready_to_fly = false;
 
-// ---------------------------------------------------------
 // Máquina de Estados de Voo
-// ---------------------------------------------------------
 enum FlightState {
     TAKEOFF,
     HOVER_1,
@@ -48,24 +41,15 @@ enum FlightState {
 
 FlightState currentState = TAKEOFF;
 
-// ---------------------------------------------------------
 // Variáveis atuais a serem enviadas
-// ---------------------------------------------------------
 float current_roll = 0.0;
 float current_pitch = 0.0;
 float current_yaw = 0.0;
 uint16_t current_thrust = 0;
 
-// ---------------------------------------------------------
 // Função de Transmissão CRTP (Setpoint)
-// ---------------------------------------------------------
-void send_crtp_command(
-    float roll,
-    float pitch,
-    float yaw,
-    uint16_t thrust
-) {
-    
+void send_crtp_command( float roll, float pitch, float yaw, uint16_t thrust) 
+{
     CommanderPayload payload;
     
     payload.roll = roll;      
@@ -87,7 +71,8 @@ void send_crtp_command(
 
     uint8_t* payload_bytes = (uint8_t*)&payload;
     
-    for (int i = 0; i < payload_size; i++) {    
+    for (int i = 0; i < payload_size; i++) 
+    {    
         Serial1.write(payload_bytes[i]);
         checksum += payload_bytes[i];            
     }
@@ -95,17 +80,15 @@ void send_crtp_command(
     Serial1.write(checksum); 
 }
 
-// ---------------------------------------------------------
 // Função de Recepção CRTP (Parser Não Bloqueante)
-// ---------------------------------------------------------
-void process_rx_ready_to_fly() {
-
+void process_rx_ready_to_fly() 
+{
     static uint8_t rx_state = 0;
     static uint8_t calculated_checksum = 0;
 
     // Processa todos os bytes disponíveis no buffer sem travar o loop
-    while (Serial1.available() > 0 && !is_ready_to_fly) {
-
+    while (Serial1.available() > 0 && !is_ready_to_fly) 
+    {
         uint8_t c = Serial1.read();
         
         switch (rx_state) {
@@ -127,82 +110,70 @@ void process_rx_ready_to_fly() {
 
                 break;
 
-
             case 2:
                 // Aguarda HEADER 0xF0
-                if (c == 0xF0) {
-
+                if (c == 0xF0) 
+                {
                     calculated_checksum = c;
                     rx_state = 3;
-
-                } else {
-
+                } 
+                else 
+                {
                     rx_state = 0;
                 }
 
                 break;
-
 
             case 3:
                 // Aguarda SIZE = 0x01
-                if (c == 0x01) {
-
+                if (c == 0x01) 
+                {
                     calculated_checksum += c;
                     rx_state = 4;
-
-                } else {
-
+                } 
+                else 
+                {
                     rx_state = 0;
                 }
 
                 break;
-
 
             case 4:
                 // Aguarda PAYLOAD = 0x01
-                if (c == 0x01) {
-
+                if (c == 0x01) 
+                {
                     calculated_checksum += c;
                     rx_state = 5;
-
-                } else {
-
+                }
+                else 
+                {
                     rx_state = 0;
                 }
 
                 break;
 
-
             case 5:
                 // Aguarda e valida CHECKSUM
-                if (c == calculated_checksum) {
-
+                if (c == calculated_checksum) 
+                {
                     is_ready_to_fly = true;
 
                     Serial.println();
-                    Serial.println(
-                        ">>> SINAL [READY TO FLY] RECEBIDO! <<<"
-                    );
+                    Serial.println( ">>> SINAL [READY TO FLY] RECEBIDO! <<<" );
 
-                    Serial.println(
-                        "=== INICIANDO MISSAO CRTP ==="
-                    );
+                    Serial.println( "=== INICIANDO MISSAO CRTP ===" );
 
-                    Serial.println(
-                        "-> TAKEOFF"
-                    );
+                    Serial.println( "-> TAKEOFF");
 
                     delay(2000);
 
                     // Sincroniza os cronômetros
                     stateStartTime = millis();
                     lastCommandTime = millis();
-
-                } else {
-
-                    Serial.println(
-                        "Erro: Checksum invalido no sinal RTF."
-                    );
+                } 
+                else 
+                {
+                    Serial.println( "Erro: Checksum invalido no sinal RTF.");
                 }
 
                 rx_state = 0;
@@ -212,36 +183,20 @@ void process_rx_ready_to_fly() {
     }
 }
 
-// ---------------------------------------------------------
-// SETUP
-// ---------------------------------------------------------
-void setup() {
-
+void setup() 
+{
     Serial.begin(115200); 
 
     delay(1000);
 
-    Serial.println(
-        "=== AGUARDANDO SINAL DE SINCRONIZACAO (READY TO FLY) ==="
-    );
+    Serial.println( "=== AGUARDANDO SINAL DE SINCRONIZACAO (READY TO FLY) ===");
 
-    Serial1.begin(
-        BAUDRATE,
-        SERIAL_8N1,
-        RX_PIN,
-        TX_PIN
-    );
+    Serial1.begin( BAUDRATE, SERIAL_8N1, RX_PIN, TX_PIN);
 }
 
-// ---------------------------------------------------------
-// LOOP - Sequência Contínua Sem Bloqueios
-// ---------------------------------------------------------
-void loop() {
-
-    // =====================================================
+void loop() 
+{
     // 1. ESPERA PELO READY TO FLY
-    // =====================================================
-
     if (!is_ready_to_fly) {
 
         process_rx_ready_to_fly();
@@ -249,115 +204,76 @@ void loop() {
         return;
     }
 
-
-    // =====================================================
     // 2. LÓGICA DA MÁQUINA DE ESTADOS
-    // =====================================================
-
     unsigned long currentMillis = millis();
 
-    unsigned long timeInState =
-        currentMillis - stateStartTime;
+    unsigned long timeInState = currentMillis - stateStartTime;
 
-
-    // =====================================================
     // 3. MUDANÇA DE ESTADO
-    // =====================================================
-
-    if (
-        currentState != MISSION_FINISHED &&
-        timeInState >= STATE_DURATION
-    ) {
-
+    if ( currentState != MISSION_FINISHED && timeInState >= STATE_DURATION) 
+    {
         stateStartTime = currentMillis;
 
         timeInState = 0;
 
-
-        switch(currentState) {
-
+        switch(currentState) 
+        {
             case TAKEOFF:
 
                 currentState = HOVER_1;
 
-                Serial.println(
-                    "-> HOVER_1"
-                );
+                Serial.println( "-> HOVER_1");
 
                 break;
-
 
             case HOVER_1:
 
                 currentState = MOVING_1;
 
-                Serial.println(
-                    "-> MOVING_1"
-                );
+                Serial.println( "-> MOVING_1");
 
                 break;
-
 
             case MOVING_1:
 
                 currentState = HOVER_2;
 
-                Serial.println(
-                    "-> HOVER_2"
-                );
+                Serial.println( "-> HOVER_2");
 
                 break;
-
 
             case HOVER_2:
 
                 currentState = MOVING_2;
 
-                Serial.println(
-                    "-> MOVING_2"
-                );
+                Serial.println( "-> MOVING_2");
 
                 break;
-
 
             case MOVING_2:
 
                 currentState = HOVER_3;
 
-                Serial.println(
-                    "-> HOVER_3"
-                );
+                Serial.println( "-> HOVER_3");
 
                 break;
-
 
             case HOVER_3:
 
                 currentState = LANDING;
 
-                Serial.println(
-                    "-> LANDING"
-                );
+                Serial.println( "-> LANDING" );
 
                 break;
-
 
             case LANDING:
-
-                // ------------------------------------------------
                 // ALTERAÇÃO PRINCIPAL:
                 // A missão termina aqui.
-                // Não volta para TAKEOFF.
-                // ------------------------------------------------
-
                 currentState = MISSION_FINISHED;
 
-                Serial.println(
-                    "-> MISSION_FINISHED"
-                );
+                Serial.println( "-> MISSION_FINISHED");
 
                 break;
-
 
             case MISSION_FINISHED:
 
@@ -365,17 +281,11 @@ void loop() {
         }
     }
 
-
-    // =====================================================
     // 4. DEFINE OS VALORES DOS COMANDOS
-    // =====================================================
+    switch(currentState) 
+    {
 
-    switch(currentState) {
-
-        // -------------------------------------------------
         // TAKEOFF
-        // -------------------------------------------------
-
         case TAKEOFF:
 
             current_roll = 0.0;
@@ -388,11 +298,7 @@ void loop() {
 
             break;
 
-
-        // -------------------------------------------------
         // HOVER
-        // -------------------------------------------------
-
         case HOVER_1:
 
         case HOVER_2:
@@ -409,11 +315,7 @@ void loop() {
 
             break;
 
-
-        // -------------------------------------------------
         // MOVIMENTO
-        // -------------------------------------------------
-
         case MOVING_1:
 
         case MOVING_2:
@@ -428,11 +330,7 @@ void loop() {
 
             break;
 
-
-        // -------------------------------------------------
         // LANDING
-        // -------------------------------------------------
-
         case LANDING:
 
             current_roll = 0.0;
@@ -441,51 +339,25 @@ void loop() {
 
             current_yaw = 0.0;
 
+            if (timeInState < 5000) 
+            {
+                float progress = (float)timeInState / 5000.0;
 
-            if (timeInState < 5000) {
+                float reverse_progress = 1.0 - progress;
 
-                float progress =
-                    (float)timeInState / 5000.0;
+                const uint16_t MIN_LIFT_THRUST = 18000;
+                const uint16_t MAX_HOVER_THRUST = 32767;
 
-
-                float reverse_progress =
-                    1.0 - progress;
-
-
-                const uint16_t MIN_LIFT_THRUST =
-                    18000;
-
-
-                const uint16_t MAX_HOVER_THRUST =
-                    32767;
-
-
-                current_thrust =
-                    MIN_LIFT_THRUST +
-                    (
-                        (
-                            MAX_HOVER_THRUST -
-                            MIN_LIFT_THRUST
-                        )
-                        *
-                        (
-                            reverse_progress *
-                            reverse_progress
-                        )
-                    );
-
-            } else {
-
+                current_thrust = MIN_LIFT_THRUST + (MAX_HOVER_THRUST - MIN_LIFT_THRUST) * (reverse_progress * reverse_progress);
+            } 
+            else 
+            {
                 current_thrust = 0;
             }
 
             break;
 
-
-        // -------------------------------------------------
         // MISSÃO FINALIZADA
-        // -------------------------------------------------
-
         case MISSION_FINISHED:
 
             current_roll = 0.0;
@@ -499,29 +371,15 @@ void loop() {
             break;
     }
 
-
-    // =====================================================
     // 5. ENVIA O COMANDO A 50 Hz
-    // =====================================================
-
-    if (
-        currentMillis - lastCommandTime >=
-        COMMAND_INTERVAL
-    ) {
-
+    if ( currentMillis - lastCommandTime >= COMMAND_INTERVAL) 
+    {
         lastCommandTime = currentMillis;
 
+        send_crtp_command( current_roll, current_pitch, current_yaw, current_thrust);
 
-        send_crtp_command(
-            current_roll,
-            current_pitch,
-            current_yaw,
-            current_thrust
-        );
-
-
-        // Mantém exatamente a lógica do seu código original
-        while (Serial1.available()) {
+        while (Serial1.available()) 
+        {
             Serial1.read();
         }
     }
