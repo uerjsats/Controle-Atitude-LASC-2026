@@ -10,8 +10,8 @@
 #define MOTOR5 7
 
 // 2. UART CRTP (PINOS PADRÃO DA XIAO ESP32-S3)
-#define CRTP_RX_PIN 43
-#define CRTP_TX_PIN 44
+#define CRTP_RX_PIN 44
+#define CRTP_TX_PIN 43
 #define CRTP_BAUDRATE 115200
 
 // 3. CRTP
@@ -219,8 +219,7 @@ void setup()
     Serial.println("\n--- RECEPTOR INICIADO ---");
     Serial.println("Aguardando 4.5s para boot do Transmissor (Câmera + SD + PSRAM)...");
 
-    // TEMPO CRÍTICO: Aguarda o transmissor terminar o setup dele completamente
-    delay(4500);
+    delay(1000);
 
     // Envia o Ready To Fly uma única vez
     enviarReadyToFly();
