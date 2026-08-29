@@ -22,7 +22,7 @@
 // 4. PWM
 #define PWM_FREQ 20000
 #define PWM_RESOLUTION 8
-#define PWM_MAX_LIMIT 80 // Limita corrente em 0,8
+#define PWM_MAX_LIMIT 40 // Limita corrente em 0,8
 
 // 5. WATCHDOG (800ms cobre a latência de gravação de foto no SD pelo transmissor)
 #define WATCHDOG_TIMEOUT 800
